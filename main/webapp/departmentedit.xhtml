@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <link rel="icon" href="img/favicon.ico"></link>
+    
+    <title>Настройки</title>
+<!--     <f:metadata>
+         <f:viewParam name="surveyname" value="#{protocoleditor.surveyName}"/>
+        <f:viewAction action="#{patient.loadPatientById()}"/>
+    </f:metadata>-->
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="/css/bootstrap-combobox.css" media="screen" rel="stylesheet" type="text/css"></link>
+<!--     IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"></link>
+
+<!--     Custom styles for this template -->
+<!--    <link href="css/navbar-static-top.css" rel="stylesheet"></link>
+-->    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+<!--     Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="/js/bootstrap-combobox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .navbar{
+          padding-left: 20px;
+          padding-right: 20px;
+        }    
+    </style>
+    </h:head>
+    <h:body>
+ <div class="container-fluid" >
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-left">
+        <li class="navbar-brand"><span class="glyphicon glyphicon-user"></span> хирург Шагиянов Р.М.</li>
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="main.xhtml"><span class="glyphicon glyphicon-home"></span> Начальная</a></li>
+      <li><a href="protocoledit.xhtml?surveyname=fgds"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Отчеты</a></li>
+    </ul>
+  </div>
+</nav>
+ </div>  
+     
+  <div class="row">
+        <div class="text-center">
+           <h4>Редактирование данных</h4>  
+        </div> 
+     </div>
+<!--        Form start here-->
+        <h:form>
+            <b:container style-class="">
+               <b:panel >
+                   <b:row>
+                       <b:column offset="4">
+                           <div class="btn-group">
+                       <div class="btn-group">
+                           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Протоколы
+                               <span class="caret"></span></button>
+                           <ul class="dropdown-menu">
+                               <li><a href="protocoledit.xhtml?surveyname=fgds">ФГДС</a></li>
+                               <li><a href="protocoledit.xhtml?surveyname=fbs">ФБС</a></li>
+                               <li><a href="protocoledit.xhtml?surveyname=fks">ФКС</a></li>
+                           </ul>
+                       </div>
+                      <a href="#" role="button" class="btn btn-default">Сотрудники</a>
+                      <a href="departmentedit.xhtml" role="button" class="btn btn-default">Отделения</a>
+
+                   </div>
+                       </b:column>
+                   </b:row>
+                   <b:row>
+                       <b:column >
+                           <h4>Редактирование отделений</h4>
+                       </b:column>
+                   </b:row>
+                   <b:well>
+                   <b:row>
+                       <b:column medium-screen="8">
+                           <b:inputText placeholder="Новое отделение" value="#{department.name}">
+                               
+                           </b:inputText>
+                       </b:column>
+                       <b:column medium-screen="1" offset="1">
+                           <b:commandButton offset-md="1" id="newdepartment" value="Добавить" look="primary" icon="plus" onclick="ajax:department.addDepartment()" >  
+                </b:commandButton> 
+                       </b:column>
+                       
+                   </b:row>
+                       </b:well>
+                   <b:dataTable value="#{survey.departmentsList}" var="dep" lang="ru" paginated="false" searching="false">
+                <b:dataTableColumn value = "#{dep}" label = "Отделение" order="asc" />
+                <b:dataTableColumn label = "" orderable="false">
+<!--                    <b:button size="xs" value="Редактировать" look="info" >
+                        
+                    </b:button>-->
+                    
+                    <b:button size="xs" value="Удалить" look="warning" >
+                        
+                    </b:button>
+                </b:dataTableColumn>
+            
+          </b:dataTable>                 
+                  
+                   
+                 
+                   
+               </b:panel>
+                 
+               
+        </b:container>
+                     
+    </h:form>
+   
+
+<script type="text/javascript">
+      //<![CDATA[
+        $(document).ready(function(){
+          $('.combobox').combobox()
+        });
+      //]]>
+    </script>
+
+
+    </h:body>
+</html>
+

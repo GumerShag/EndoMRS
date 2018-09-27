@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+   <link rel="icon" href="img/favicon.ico"></link>
+    
+    <title>Новое обследование</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="/css/bootstrap-combobox.css" media="screen" rel="stylesheet" type="text/css"></link>
+<!--     IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"></link>
+
+<!--     Custom styles for this template -->
+<!--    <link href="css/navbar-static-top.css" rel="stylesheet"></link>
+-->    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+<!--     Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="/js/bootstrap-combobox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .navbar{
+          padding-left: 20px;
+          padding-right: 20px;
+        }    
+    </style>
+    </h:head>
+    <h:body>
+ <div class="container-fluid" >
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-left">
+        <li class="navbar-brand"><span class="glyphicon glyphicon-user"></span> хирург Шагиянов Р.М.</li>
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="main.xhtml"><span class="glyphicon glyphicon-home"></span> Начальная</a></li>
+      <li><a href="protocoledit.xhtml?surveyname=fgds"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Отчеты</a></li>
+    </ul>
+  </div>
+</nav>
+ </div>  
+     
+  <div class="row">
+        <div class="text-center">
+           <h4>Регистрация нового больного</h4>  
+        </div> 
+     </div>
+<!--        Form start here-->
+        <h:form>
+            <b:container style-class="">
+               <b:panel >
+                    <b:row>
+                        <b:column medium-screen="2" offset="2">
+                    <h4>ФИО</h4>
+                </b:column>
+                <b:column medium-screen="2">
+                    <b:inputText placeholder="Фамилия" id="lastname" value="#{patient.lastname}" required="true" required-message="незаполнена Фамилия">
+<!--                       ajax="true" autocomplete="false" update="@(.message)">-->
+                    <b:focus rendered="true" />
+                   </b:inputText>
+                </b:column>
+                <b:column medium-screen="2">
+                    <b:inputText placeholder="Имя" id="firstname" value="#{patient.firstname}" required="true">
+<!--                       ajax="true" autocomplete="false" update="@(.message)">-->
+                   </b:inputText>
+                </b:column>
+                <b:column medium-screen="2">
+                    <b:inputText placeholder="Отчество" id="fathername" value="#{patient.fathername}" required="true">
+<!--                       ajax="true" autocomplete="false" update="@(.message)">-->
+                   </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column medium-screen="2" offset="2">
+                    <h4>Дата рождения</h4>
+                </b:column>
+                <b:column medium-screen="1" >
+                    <b:inputText placeholder="ДД" id="day" value="#{patient.day}" maxlength="2" required="true">
+                     
+                     </b:inputText>
+                </b:column>
+                  <b:column medium-screen="1">
+                      <b:inputText placeholder="ММ" id="month" value="#{patient.month}" maxlength="2" required="true">
+                     
+                     </b:inputText>
+                </b:column>
+                <b:column medium-screen="2">
+                    <b:inputText placeholder="ГГГГ" id="year" value="#{patient.year}" maxlength="4" required="true">
+                     
+                     </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column medium-screen="2" offset="2">
+                    <h4>Пол</h4>
+                </b:column>
+                 <b:column medium-screen="2">
+                     <b:selectOneMenu value="#{patient.gengre}" id="gengre">
+                         <f:selectItem itemLabel="Выбрать" />
+                         <f:selectItem itemLabel="Муж"  />
+                         <f:selectItem itemLabel="Жен" />
+                         
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                <b:row>
+                     <b:column medium-screen="2" offset="2">
+                        <h4>Адрес</h4>
+                    </b:column>
+                    <b:column medium-screen="4">
+                        <b:inputText value="#{patient.adress}" placeholder="Населенный пункт/Улица/Дом/Квартира" id="adress">
+                            
+                        </b:inputText>
+                    </b:column>
+                </b:row>
+                <b:row>
+                     <b:column medium-screen="2" offset="2">
+                        <h4>Район Башкирии</h4>
+                    </b:column>
+                    <b:column medium-screen="4">
+                        <b:selectOneMenu value="#{patient.region}" id="region" >
+                            <f:selectItem itemLabel="Выбрать"/>
+                            <f:selectItem  itemLabel="Дюртюлинский"/>
+                            <f:selectItem itemLabel="Илишевский"/>
+                            <f:selectItem itemLabel="Чекмагушевсикй"/>
+                            <f:selectItem itemLabel="Бирский"/>
+                            <f:selectItem itemLabel="Бураевский"/>
+                            <f:selectItem itemLabel="Альшеевский"/>
+                            <f:selectItem itemLabel="Архангельский"/>
+                            <f:selectItem itemLabel="Аскинсакий"/>
+                            <f:selectItem itemLabel="Аургазинский"/>
+                            <f:selectItem itemLabel="Баймакский"/>
+                            <f:selectItem itemLabel="Бакалинский"/>
+                            <f:selectItem itemLabel="Балтачевский"/>
+                            <f:selectItem itemLabel="Белебеевский"/>
+                            <f:selectItem itemLabel="Белокатайский"/>
+                            <f:selectItem itemLabel="Белорецкий"/>
+                            <f:selectItem itemLabel="Бижбулякский"/>
+                            <f:selectItem itemLabel="Благоварский"/>
+                            <f:selectItem itemLabel="Благовещенский"/>
+                            <f:selectItem itemLabel="Буздякский"/>
+                            <f:selectItem itemLabel="Бурзянский"/>
+                            <f:selectItem itemLabel="Гафурийский"/>
+                            <f:selectItem itemLabel="Давлекановский"/>
+                            <f:selectItem itemLabel="Дуванский"/>
+                            <f:selectItem itemLabel="Ермекеевский"/>
+                            <f:selectItem itemLabel="Зиранчуринский"/>
+                            <f:selectItem itemLabel="Зилаирский"/>
+                            <f:selectItem itemLabel="Иглинский"/>
+                            <f:selectItem itemLabel="Ишимбайский"/>
+                            <f:selectItem itemLabel="Калтасинский"/>
+                            <f:selectItem itemLabel="Караидельский"/>
+                            <f:selectItem itemLabel="Кармаскалинский"/>
+                            <f:selectItem itemLabel="Караидельский"/>
+                            <f:selectItem itemLabel="Кигинский"/>
+                            <f:selectItem itemLabel="Краснокамский"/>
+                            <f:selectItem itemLabel="Кугарчинский"/>
+                            <f:selectItem itemLabel="Кумертауский"/>
+                            <f:selectItem itemLabel="Кушнаренковский"/>
+                            <f:selectItem itemLabel="Мелеузовский"/>
+                            <f:selectItem itemLabel="Мечетлинский"/>
+                            <f:selectItem itemLabel="Мишкинский"/>
+                            <f:selectItem itemLabel="Миакинский"/>
+                            <f:selectItem itemLabel="Нуримановский"/>
+                            <f:selectItem itemLabel="Салаватский"/>
+                            <f:selectItem itemLabel="Стерлибашевский"/>
+                            <f:selectItem itemLabel="Стерлитамакский"/>
+                            <f:selectItem itemLabel="Татышлинский"/>
+                            <f:selectItem itemLabel="Туймазинский"/>
+                            <f:selectItem itemLabel="Уфимский"/>
+                            <f:selectItem itemLabel="Учалинский"/>
+                            <f:selectItem itemLabel="Федоровский"/>
+                            <f:selectItem itemLabel="Хайбулинский"/>
+                            <f:selectItem itemLabel="Чишминский"/>
+                            <f:selectItem itemLabel="Шаранский"/>
+                            <f:selectItem itemLabel="Янаульский"/>
+                        </b:selectOneMenu>
+                    </b:column>
+                </b:row>
+                
+                   
+               </b:panel>
+                 
+                <b:column medium-screen="5">
+                     
+                    </b:column>
+                   <h:panelGrid columns="2" >
+                       <b:commandButton id="saveandnewsurvey"  action="#{patient.navigate()}" value="Обследование" look="success" icon="new-window" onclick="ajax:patient.savePatient()">  
+                       </b:commandButton>  
+                       <b:button value="Отменить" icon="remove"  outcome="main.xhtml" >  
+                       </b:button>
+                    </h:panelGrid>
+        </b:container>
+    </h:form>
+
+
+<script type="text/javascript">
+      //<![CDATA[
+        $(document).ready(function(){
+          $('.combobox').combobox()
+        });
+      //]]>
+    </script>
+
+
+    </h:body>
+</html>
+

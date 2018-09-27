@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <f:metadata>
+        <f:viewParam name="patientId" value="#{survey.patientId}"/>
+    </f:metadata>
+    <link rel="icon" href="img/favicon.ico"></link>
+    
+    <title>Новое обследование</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="/css/bootstrap-combobox.css" media="screen" rel="stylesheet" type="text/css"></link>
+<!--     IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"></link>
+
+<!--     Custom styles for this template -->
+<!--    <link href="css/navbar-static-top.css" rel="stylesheet"></link>
+-->    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+<!--     Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="/js/bootstrap-combobox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .navbar{
+          padding-left: 20px;
+          padding-right: 20px;
+        }    
+    </style>
+    </h:head>
+    <h:body>
+ <div class="container-fluid" >
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-left" >
+        <li class="navbar-brand"><span class="glyphicon glyphicon-user"></span> хирург Шагиянов Р.М.</li>
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="main.xhtml"><span class="glyphicon glyphicon-home"></span> Начальная</a></li>
+      <li><a href="protocoledit.xhtml?surveyname=fgds"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Отчеты</a></li>
+    </ul>
+  </div>
+</nav>
+ </div>  
+    <div class="row">
+        <div class="text-center">
+           <h3>Новое обследование</h3>  
+        </div> 
+     </div> 
+        <b:panel title="#{survey.patientdata}" look="primary" collapsible="false" titleStyle="">
+        
+       <h:form>
+            <b:container style-class="">
+               <b:panel >
+                <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Вид обследования</h4>
+                </b:column>
+                 <b:column medium-screen="1">
+                     <b:inputText value="#{survey.surveyName}" disabled="true" />
+                </b:column>
+                    <b:column medium-screen="1"     >
+                    <h4>Дата</h4>
+                </b:column>
+                 <b:column medium-screen="2">
+                     <b:inputText value="#{survey.todaydate}" />
+                </b:column>
+            </b:row>
+            
+                   <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Направительный диагноз</h4>
+                </b:column>
+                       <b:column medium-screen="4">
+                           <b:selectOneMenu value="#{survey.diagnosis}" >
+                               <f:selectItems value="#{survey.diagnosisList}"/>
+                      </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                  <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Направитель</h4>
+                </b:column>
+                 <b:column medium-screen="4">
+                     <b:selectOneMenu  id="departments" value="#{survey.guider}">
+                         <f:selectItems value="#{survey.departmentsList}"/>
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                    <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Вид исследования</h4>
+                </b:column>
+                 <b:column medium-screen="4">
+                     <b:selectOneMenu value="#{survey.surveyType}" >
+                         <f:selectItem itemLabel="Выбрать" />
+                         <f:selectItem itemLabel="Плановое"  />
+                         <f:selectItem itemLabel="Экстренное" />
+                         <f:selectItem itemLabel="Интраоперационное" />
+                         
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                    <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Анастезия</h4>
+                </b:column>
+                 <b:column medium-screen="4">
+                     <b:selectOneMenu value="#{survey.anethesia}" >
+                         <f:selectItem itemLabel="Без анестезии" />
+                         <f:selectItem itemLabel="Лидокаин 10% - спрей"  />
+                         <f:selectItem itemLabel="Тримекаин 2% - 5,0 мл" />
+                         <f:selectItem itemLabel="Пиромекаин 2% - 5,0 мл" />
+                         <f:selectItem itemLabel="Дикаин 2% - 3,0 мл" />
+                         <f:selectItem itemLabel="Лидокаин  2% - 5,0 мл" />
+                         <f:selectItem itemLabel="Внутривенная седатация" />
+                         
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                    <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Медсестра</h4>
+                </b:column>
+                 <b:column medium-screen="4">
+                     <b:selectOneMenu value="#{survey.nurseName}"  >
+                         <f:selectItem itemLabel="Выбрать" />
+                         <f:selectItem itemLabel="Медсестра 1"  />
+                         <f:selectItem itemLabel="Медсестра 2" />
+                         
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                    <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h4>Хирург</h4>
+                </b:column>
+                 <b:column medium-screen="4">
+                     <b:selectOneMenu value="#{survey.surgeonName}" >
+                         <f:selectItem itemLabel="Выбрать" />
+                         <f:selectItem itemLabel="Шагиянов Р.М."  />
+                         <f:selectItem itemLabel="Галеев А.Р." />
+                         <f:selectItem itemLabel="Сабиров Р.Р." />
+                         
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                   
+         </b:panel>
+        <div class="row">
+            <div class="text-center" >
+                <h3>Протокол исследования</h3> 
+           </div> 
+         </div>
+        <b:panel>
+        
+                   <b:row>
+                      <b:column medium-screen="2" offset="1">
+                    <h5>Протокол</h5>
+                </b:column>                
+                       <b:column medium-screen="6">
+                     <b:selectOneMenu  value="#{survey.protocol}" id="conclusion" onchange="ajax:survey.updateDescr()"  update="protocol_descr" >
+                         <f:selectItem itemLabel="Выбрать" />
+                         <f:selectItems value="#{survey.protocolConslusion}"/>
+                      </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                   
+            <b:row>       
+            <b:inputTextarea rows="5" span="12" placeholder="Выбрать протокол исследования" id="protocol_descr" value="#{survey.protocolDescr}">
+                  
+                   </b:inputTextarea>
+                   </b:row>
+                   
+                  <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h5>Манипуляция</h5>
+                </b:column>
+                 <b:column medium-screen="6">
+                     <b:selectOneMenu value="#{survey.manipulation}">
+                         <f:selectItems value="#{survey.manipualtionList}" />
+                                             
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+    <!--                   <div class="row">
+                        <div class="text-center" >
+                           <h5>Заключение врача:</h5>  
+                        </div> 
+                      </div>-->
+    <b:row>              
+    <b:inputTextarea rows="3" span="12" placeholder="Заключение врача" value="#{survey.conclusion}">
+                   
+                   </b:inputTextarea>
+    </b:row>
+        <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h5>Экспресс тест на Helicobacter pilory</h5>
+                </b:column>
+                 <b:column medium-screen="6">
+                     <b:selectOneMenu value="#{survey.helicoTest}" >
+                         <f:selectItem itemLabel="Обследование" />
+                         <f:selectItem itemLabel="положительный ++++"  />
+                         <f:selectItem itemLabel="отрицательный"  />
+                         <f:selectItem itemLabel="положительный +++"  />
+                         <f:selectItem itemLabel="положительный ++"  />
+                         <f:selectItem itemLabel="положительный +"  />
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                   <b:row>
+                <b:column medium-screen="2" offset="1">
+                    <h5>Экспресс тест на кислотность</h5>
+                </b:column>
+                 <b:column medium-screen="6">
+                     <b:selectOneMenu value="#{survey.acidityTest}" >
+                         <f:selectItem itemLabel="Обследование" />
+                         <f:selectItem itemLabel="pH = 1 - 2 - повышенная"  />
+                         <f:selectItem itemLabel="рН = 3 - 4 - нормальная" />
+                         <f:selectItem itemLabel="рН = 5 - 7 - пониженная" />
+                         
+                         
+                     </b:selectOneMenu>
+                </b:column>
+            </b:row>
+                   
+                   
+               </b:panel>
+                
+              
+
+                <b:column medium-screen="5">
+                     
+                    </b:column>
+                   <h:panelGrid columns="3"  >
+                       <b:commandButton id="savesurvey" value="Сохранить" action="#{survey.navigate()}" look="success" icon="save" onclick="ajax:survey.saveSurvey()" >  
+<!--                            <f:param name="patientId" value="11" />  -->
+                       </b:commandButton>  
+                       <b:button value="Отменить" icon="remove"  outcome="main.xhtml">  
+                       </b:button>
+
+                        
+                       <b:commandButton id="print" title="Сохранить и распечатать протокол" value="Печать" icon="print"  action="#{survey.printSurveyProtocol()}">  
+<!--                            <f:param name="testId" value="11" />  -->
+                        </b:commandButton>
+                    </h:panelGrid>
+        </b:container>
+           
+       </h:form> 
+             
+    
+        
+       
+   </b:panel>
+        
+<!--        Form start here-->
+      
+       
+ 
+
+
+<script type="text/javascript">
+      //<![CDATA[
+        $(document).ready(function(){
+          $('.combobox').combobox()
+        });
+      //]]>
+    </script>
+
+
+    </h:body>
+</html>
+

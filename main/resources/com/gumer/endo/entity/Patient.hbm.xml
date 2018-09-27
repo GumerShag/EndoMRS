@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 17, 2016 5:50:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.gumer.endo.entity.Patient" table="patient" schema="public" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" not-null="true" />
+        </property>
+        <property name="fatherName" type="string">
+            <column name="father_name" not-null="true" />
+        </property>
+        <property name="adress" type="string">
+            <column name="adress" not-null="true" />
+        </property>
+        <property name="gengre" type="string">
+            <column name="gengre" not-null="true" />
+        </property>
+        <property name="region" type="string">
+            <column name="region" not-null="true" />
+        </property>
+        <property name="socialStatus" type="string">
+            <column name="social_status" not-null="true" />
+        </property>
+        <property name="birthDate" type="string">
+            <column name="birth_date"  not-null="false" />
+        </property>
+        <property name="age" type="int">
+            <column name="age" not-null="true" />
+        </property>
+     </class>
+</hibernate-mapping>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 17, 2016 5:50:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="com.gumer.endo.entity.Surveys" optimistic-lock="version" schema="public" table="surveys">
+    <id name="id" type="int">
+      <column name="id"/>
+       <generator class="increment" />
+    </id>
+    <property name="patientId" type="int">
+        <column name="patient_id" not-null="true"/>
+    </property>
+    <property name="date" type="date">
+      <column length="13" name="date" not-null="true"/>
+    </property>
+    <property name="surveyName" type="string">
+      <column name="survey_name" not-null="true"/>
+    </property>
+    <property name="guideDiagnosis" type="string">
+      <column name="guide_diagnosis" not-null="true"/>
+    </property>
+    <property name="guide" type="string">
+      <column name="guide" not-null="true"/>
+    </property>
+    <property name="surveyType" type="string">
+      <column name="survey_type" not-null="true"/>
+    </property>
+    <property name="anethesia" type="string">
+      <column name="anethesia" not-null="true"/>
+    </property>
+    <property name="surgeonName" type="string">
+      <column name="surgeon_name" not-null="true"/>
+    </property>
+    <property name="nurseName" type="string">
+      <column name="nurse_name" not-null="true"/>
+    </property>
+    <property name="protocol" type="string">
+      <column name="protocol" not-null="true"/>
+    </property>
+    <property name="protocolDescr" type="string">
+      <column name="protocol_descr" not-null="true"/>
+    </property>
+    <property name="manipulation" type="string">
+      <column name="manipulation" not-null="true"/>
+    </property>
+    <property name="conclusion" type="string">
+      <column name="consclusion" not-null="true"/>
+    </property>
+    <property name="helicoTest" type="string">
+      <column name="helico_test" not-null="true"/>
+    </property>
+    <property name="acidityTest" type="string">
+      <column name="acidity_test" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
